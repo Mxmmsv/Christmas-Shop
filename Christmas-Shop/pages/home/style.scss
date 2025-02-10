@@ -1,0 +1,817 @@
+$primary: #ff4646;
+$dark: #181c29;
+$static-white: #fff;
+$content-background: #ecf3f8;
+$tag-purple: #4361ff;
+$tag-pink: #ff43f7;
+$tag-green: #06a44f;
+$primary-10: rgba(255, 70, 70, 0.1);
+$static-white-20: rgba(255, 255, 255, 0.2);
+$static-white-40: rgba(255, 255, 255, 0.4);
+$overlay: rgba(24, 28, 41, 0.80);
+$first-family: "Montserrat", sans-serif;
+$second-family: "Allura", sans-serif;
+$tablet: 768px;
+$mobile: 380px;
+$desktop: 1440px;
+
+@mixin typography($font-family, $font-size, $font-weight, $line-height, $letter-spacing: null, $text-transform: null) {
+  font-family: $font-family;
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  @if $letter-spacing {
+    letter-spacing: $letter-spacing;
+  }
+  @if $text-transform {
+    text-transform: $text-transform;
+  }
+}
+
+@mixin flex($align: center, $justify: center) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+* {
+  scrollbar-width: none;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+span {
+  display: inline-block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $dark;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+p {
+  margin: 0;
+}
+
+h1 {
+  @include typography($first-family, 32px, 600, 150%, 5.76px, uppercase);
+}
+
+h2 {
+  @include typography($first-family, 24px, 600, 152%, 3.84px, uppercase);
+}
+
+h3 {
+  @include typography($first-family, 16px, 600, 152%, 1.28px, uppercase);
+}
+
+h4 {
+  @include typography($first-family, 12px, 600, 130%, 0.6px, uppercase);
+}
+
+p {
+  @include typography($first-family, 16px, 400, 148%);
+}
+
+.action-large {
+  @include typography($first-family, 24px, 600, 152%, 3.84px, uppercase);
+}
+
+.action-small {
+  @include typography($first-family, 12px, 600, 130%, 0.6px, uppercase);
+}
+
+.caption {
+  @include typography(Allura, 24px, 400, 100%, 1.2px);
+}
+
+.slider-text {
+  @include typography($first-family, 80px, 600, 100%, null, uppercase);
+}
+
+.caption {
+  overflow-y: hidden;
+}
+
+.slider-text {
+  overflow-y: hidden;
+}
+
+.work {
+  color: $tag-purple;
+}
+
+.health {
+  color: $tag-green;
+}
+
+.harmony {
+  color: $tag-pink;
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 32px;
+  border-radius: 20px;
+  border: 0;
+  background: $dark;
+  transition: all, ease-in-out, 0.6s;
+
+  .action-small {
+    color: $static-white;
+  }
+
+  @media (pointer: fine) {
+    &:hover {
+      background-color: $static-white;
+
+      .action-small {
+        color: $dark;
+      }
+    }
+  }
+}
+
+.wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  @media screen and (max-width: $tablet) {
+    max-width: $tablet;
+  }
+
+  @media screen and (max-width: $mobile) {
+    max-width: $mobile;
+  }
+}
+
+.header {
+  padding: 0 8px;
+}
+
+.header_container {
+  @include flex(center, space-between);
+  padding: 12px 0;
+  margin: 0 auto;
+}
+
+.logo {
+  @include flex();
+  padding: 8px 20px;
+  color: $dark;
+  &::before {
+    content: url("../../assets/img/svg/Vector.svg");
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+}
+
+.burger_menu {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: none;
+  @media screen and (max-width: $tablet) {
+    display: block;
+  }
+}
+
+.burger {
+  @include flex();
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  gap: 6px;
+  transition: all, ease-in-out, 0.6s;
+
+  & svg {
+    transition: all, ease-in-out, 0.6s;
+  }
+
+  & svg path {
+    stroke-width: 1px;
+    stroke: $dark;
+  }
+}
+
+.nav_container {
+  @include flex();
+  height: 100%;
+}
+
+.items {
+  @include flex();
+  flex-direction: row;
+  gap: 8px;
+  @media screen and (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.item {
+  @include flex();
+  padding: 12px 20px;
+  transition: all, ease-in-out, 0.6s;
+
+  @media (pointer: fine) {
+    &:hover {
+      color: $primary;
+      background-color: $primary-10;
+      border-radius: 12px;
+    }
+  }
+}
+
+.hero {
+  @include flex();
+  padding: 60px 8px;
+  border-radius: 20px 20px 0px 0px;
+  background: url("../../assets/img/bg-ball.png") 50% 50% / cover no-repeat,
+    url("../../assets/img/bg-snow.png") 50% 50% / cover no-repeat, $primary;
+}
+
+.br_for_hero_header {
+  display: none;
+}
+
+.hero_container {
+  @include flex();
+  flex-direction: column;
+  gap: 12px;
+  padding: 60px 0px;
+  max-width: 426px;
+  text-align: center;
+  color: $static-white;
+  white-space: nowrap;
+  @media screen and (max-width: $mobile) {
+    & .br_for_hero_header {
+      display: block;
+    }
+  }
+}
+
+.about {
+  @include flex();
+  padding: 60px 0;
+  background: url("../../assets/img/bg-snow.png") 50% 50% / cover no-repeat, $primary;
+}
+
+.about_container {
+  @include flex();
+  max-width: 88.611vw;
+  border-radius: 20px;
+  background: $static-white;
+  @media screen and (max-width: $tablet) {
+    max-width: 97.917vw;
+  }
+
+  @media screen and (max-width: 550px) {
+    padding: 0 20px;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: $mobile) {
+    max-width: 95.789vw;
+    padding: 0 20px;
+    flex-direction: column;
+  }
+}
+
+.br_for_about_header {
+  display: none;
+}
+
+.text_container {
+  @include flex();
+  padding: 0 9px 0 60px;
+  & div {
+    @include flex(normal, center);
+    flex-direction: column;
+    gap: 20px;
+    padding: 60px 0;
+
+    & h2 {
+      color: $dark;
+    }
+
+    & p {
+      color: $dark;
+    }
+
+    & .caption {
+      color: $primary;
+    }
+  }
+
+  @media screen and (max-width: $tablet) {
+    padding: 0;
+    & div {
+      padding: 0 0 0 60px;
+    }
+    & .br_for_about_header {
+      display: block;
+    }
+    & .clear_br {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    & div {
+      padding: 60px 0;
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+    & .br_for_about_header {
+      display: none;
+    }
+  }
+}
+
+.santa {
+  width: 638px;
+  height: 528px;
+  border-radius: 20px;
+  background: url("../../assets/img/santa.png");
+  background-position: center;
+  @media screen and (max-width: $tablet) {
+    width: 54.036vw;
+  }
+
+  @media screen and (max-width: 550px) {
+    width: 100vw;
+  }
+
+  @media screen and (max-width: $mobile) {
+    width: 95.789vw;
+  }
+}
+
+.slider {
+  @include flex();
+  padding: 60px 8px;
+  background: url("../../assets/img/bg-snow.png") 50% 50% / cover no-repeat, $primary;
+}
+
+.slider_container {
+  @include flex();
+  max-width: 1276px;
+  flex-direction: column;
+  gap: 20px;
+  & > :nth-child(2) {
+    align-self: flex-start;
+  }
+
+  & > :last-child {
+    align-self: flex-end;
+  }
+}
+
+.slider_text {
+  @include flex();
+  flex-direction: column;
+  gap: 12px;
+  color: $static-white;
+}
+
+.slider_row {
+  @include flex(center, flex-start);
+  gap: 20px;
+  color: $static-white;
+
+  & img {
+    position: relative;
+    z-index: 100;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+  }
+}
+
+.slider_button_container {
+  @include flex();
+  flex-direction: row;
+  gap: 20px;
+}
+
+.slider_button {
+  @include flex();
+  width: 56px;
+  height: 56px;
+  border-radius: 20px;
+  background-color: transparent;
+  border: 1px solid $static-white-40;
+  stroke: $static-white;
+}
+
+.slider_button_active {
+  cursor: pointer;
+  border: 1px solid $static-white;
+  transition: all, ease-in-out, 0.3s;
+
+  @media (pointer: fine) {
+    &:hover {
+      background-color: $static-white;
+      stroke: $primary;
+    }
+  }
+}
+
+.gifts {
+  @include flex();
+  padding: 60px 0;
+  background: url("../../assets/img/bg-snow.png") 50% 50% / cover no-repeat, $primary;
+}
+
+.gifts_container {
+  @include flex();
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cards {
+  @include flex();
+  flex-direction: row;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.card > div {
+  cursor: pointer;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  width: 310px;
+  height: 342px;
+  border-radius: 20px;
+  background-color: $static-white;
+
+  @media (pointer: fine) {
+    &:hover {
+      & h3 {
+        color: $primary;
+      }
+    }
+  }
+
+  & a {
+    height: 100%;
+  }
+
+  & img {
+    grid-area: 1 / 1 / 3 / 2;
+    width: 310px;
+    height: 230px;
+    background-color: $content-background;
+  }
+
+  & div {
+    grid-area: 3 / 1 / 4 / 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+    width: 100%;
+    border-radius: 20px;
+
+    & h3 {
+      transition: all, ease-in-out, 0.6s;
+      color: $dark;
+    }
+  }
+}
+
+.timer {
+  @include flex();
+  padding: 60px 0;
+  border-radius: 0px 0px 20px 20px;
+  background: url("../../assets/img/bg-snow.png") 50% 50% / cover no-repeat,
+    url("../../assets/img/bg-forest.png") 50% / cover no-repeat, $primary;
+}
+
+.timer_container {
+  @include flex();
+  flex-direction: column;
+  padding: 60px 0;
+}
+
+.timer_text {
+  @include flex();
+  flex-direction: column;
+  padding: 60px 0;
+  max-width: 426px;
+  gap: 20px;
+  text-align: center;
+  color: $static-white;
+}
+
+.timer_gap {
+  @include flex();
+  flex-direction: column;
+  gap: 8px;
+}
+
+.timer_counter {
+  display: grid;
+  align-items: center;
+  padding: 8px 12px 12px 12px;
+  border-radius: 20px;
+  background-color: $static-white-40;
+  grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr;
+  & div {
+    width: 80px;
+    text-align: center;
+  }
+}
+
+.separator {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 20px;
+  background-color: $static-white;
+}
+
+.footer {
+  @include flex();
+  padding: 60px 0;
+  @media screen and (max-width: $mobile) {
+    padding: 55px 0;
+  }
+}
+
+.footer_container {
+  @include flex();
+  flex-direction: column;
+  gap: 60px;
+}
+
+.footer_cards {
+  @include flex();
+  flex-direction: row;
+  gap: 12px;
+  @media screen and (max-width: 1280px) {
+    flex-direction: column;
+  }
+}
+
+.footer_card a {
+  @include flex();
+
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 20px;
+  color: $dark;
+  background-color: $content-background;
+  transition: all, ease-in-out, 0.6s;
+
+  @media (pointer: fine) {
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 417px;
+  }
+
+  @media screen and (max-width: 1280px) {
+    width: 95vw;
+  }
+
+  @media screen and (max-width: $tablet) {
+    width: 752px;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: 95vw;
+  }
+
+  @media screen and (max-width: $mobile) {
+    width: 364px;
+  }
+}
+
+.credit {
+  @include flex();
+  flex-direction: column;
+  gap: 9px;
+
+  & .caption {
+    height: 28px;
+    transition: all, ease-in-out, 0.6s;
+
+    @media (pointer: fine) {
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
+.links {
+  @include flex();
+  gap: 12px;
+
+  & a div {
+    color: $dark;
+    padding: 8px;
+    & svg path {
+      transition: all, ease-in-out, 0.6s;
+    }
+
+    @media (pointer: fine) {
+      &:hover {
+        cursor: pointer;
+        & svg path {
+          stroke: $primary;
+        }
+      }
+    }
+  }
+}
+
+.lock {
+  overflow-y: hidden;
+}
+
+.not_active {
+  display: none;
+}
+
+.slide_out {
+  animation: slideOut 0.8s;
+}
+
+.active {
+  display: block;
+  animation: slide 0.8s;
+}
+
+.burger_nav_container {
+  width: 100vw;
+  height: calc(100vh - 64px);
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $static-white;
+}
+
+.rotate {
+  gap: 0;
+}
+
+.first_line {
+  transition: all, ease-in-out, 0.6s;
+  transform: rotate(-45deg);
+}
+
+.second_line {
+  transition: all, ease-in-out, 0.6s;
+  transform: rotate(45deg);
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.burger_nav_content {
+  height: 100%;
+  @include flex();
+  flex-direction: column;
+  gap: 8px;
+
+  & .action-small {
+    font-size: 24px;
+    line-height: 152%;
+    letter-spacing: 3.84px;
+  }
+}
+
+.modal {
+  @include flex();
+  position: fixed;
+  top: 0;
+  background-color: $overlay;
+  width: 100vw;
+  height: 100vh;
+}
+
+.modal > div {
+  @include flex();
+  flex-direction: column;
+  max-width: 400px;
+  border-radius: 20px;
+  background-color: $static-white;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    background-color: $content-background;
+  }
+
+  & > div:not(.exit_container) {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    border-radius: 20px;
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+}
+
+.loveContainer_content {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+
+  & p:first-of-type {
+    width: 184px;
+  }
+
+  & div {
+    display: flex;
+    gap: 9px;
+  }
+}
+
+.exit_container {
+  cursor: pointer;
+  position: fixed;
+  right: 524px;
+  top: 123px;
+  transition: all, ease-in-out, 0.6s;
+  &:hover {
+    transform: scale(1.3);
+  }
+}
+
+.arrow_up {
+  display: none;
+  @media screen and (max-width: $tablet) {
+    position: fixed;
+    @include flex();
+    bottom: 0;
+    right: 0;
+    width: 56px;
+    height: 56px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border-radius: 100px;
+    border: 1px solid $primary;
+    background: $static-white;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+}

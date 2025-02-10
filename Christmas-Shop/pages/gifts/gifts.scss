@@ -1,0 +1,132 @@
+@import "../home/style.scss";
+
+.item_active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  color: $primary;
+  background-color: $primary-10;
+  border-radius: 12px;
+}
+
+.gifts_page {
+  @include flex();
+  padding: 60px 0;
+  border-radius: 20px;
+  background: url("../../assets/img/bg-garland.png") 50% 0 / 100% no-repeat, $primary;
+}
+
+.gifts_pages_container {
+  @include flex();
+  flex-direction: column;
+  gap: 20px;
+}
+
+.br_for_gifts_title {
+  display: none;
+}
+
+.gifts_text_container {
+  max-width: 426px;
+  text-align: center;
+  & h1 {
+    color: $static-white;
+  }
+  @media screen and (max-width: $mobile) {
+    & .br_for_gifts_title {
+      display: block;
+    }
+  }
+}
+
+.display_none {
+  display: none;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.tabs {
+  @include flex();
+  gap: 8px;
+  @media screen and (max-width: $mobile) {
+    gap: 0;
+  }
+}
+
+.tab {
+  cursor: pointer;
+  padding: 11px 20px;
+  border-radius: 12px;
+  transition: all, ease-in-out, 0.6s;
+  color: $static-white;
+
+  @media (pointer: fine) {
+    &:hover {
+      background: $static-white-20;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    padding: 12px 8px;
+  }
+}
+
+input[type="radio"]:checked + label {
+  cursor: default;
+  border-radius: 12px;
+  background: $static-white-20;
+}
+
+.cards {
+  @include flex();
+  flex-direction: row;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.card > div {
+  cursor: pointer;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  width: 310px;
+  height: 342px;
+  border-radius: 20px;
+  background-color: $static-white;
+
+  @media (pointer: fine) {
+    &:hover {
+      & h3 {
+        color: $primary;
+      }
+    }
+  }
+
+  & a {
+    height: 100%;
+  }
+
+  & img {
+    grid-area: 1 / 1 / 3 / 2;
+    width: 310px;
+    height: 230px;
+    background-color: $content-background;
+  }
+
+  & div {
+    grid-area: 3 / 1 / 4 / 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+    width: 100%;
+    border-radius: 20px;
+
+    & h3 {
+      transition: all, ease-in-out, 0.6s;
+      color: $dark;
+    }
+  }
+}
