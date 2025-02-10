@@ -527,7 +527,7 @@ function previousPage() {
   slider.style.transition = "all, ease-in-out, 0.6s";
 }
 
-if (window.location.pathname === "/mxmmsv.github.io/Christmas-Shop/pages/home/index.html") {
+if (window.location.pathname === "/Christmas-Shop/Christmas-Shop/pages/home/index.html") {
   sliderButton[0].addEventListener("click", previousPage);
   sliderButton[1].addEventListener("click", nextPage);
   window.addEventListener("resize", () => {
@@ -588,7 +588,7 @@ if (window.location.pathname === "/mxmmsv.github.io/Christmas-Shop/pages/home/in
 }
 
 function randomCard(a) {
-  if (window.location.pathname === "/mxmmsv.github.io/Christmas-Shop/pages/gifts/gifts.html") {
+  if (window.location.pathname === "/Christmas-Shop/Christmas-Shop/pages/gifts/gifts.html") {
     if (a === 0) {
       a += 1;
       return 0;
@@ -657,20 +657,20 @@ function createCard(a) {
 }
 
 function initialCard() {
-  if (window.location.pathname === "/mxmmsv.github.io/Christmas-Shop/pages/home/index.html") {
+  if (window.location.pathname === "/Christmas-Shop/Christmas-Shop/pages/home/index.html") {
     for (let i = 0; i < 4; i += 1) {
       createCard();
     }
   }
 
-  if (window.location.pathname === "/mxmmsv.github.io/Christmas-Shop/pages/gifts/gifts.html") {
+  if (window.location.pathname === "/Christmas-Shop/Christmas-Shop/pages/gifts/gifts.html") {
     for (let a = 0; a < gifts.length; a += 1) {
       createCard(a);
     }
   }
 }
 
-if (window.location.pathname === "/mxmmsv.github.io/Christmas-Shop/pages/gifts/gifts.html") {
+if (window.location.pathname === "/Christmas-Shop/Christmas-Shop/pages/gifts/gifts.html") {
   const radioTabButton = document.querySelectorAll(".tab");
 
   radioTabButton[0].addEventListener("click", function () {
@@ -919,7 +919,7 @@ function scrollUp() {
   });
 }
 
-if (window.location.pathname === "/mxmmsv.github.io/Christmas-Shop/pages/gifts/gifts.html") {
+if (window.location.pathname === "/Christmas-Shop/Christmas-Shop/pages/gifts/gifts.html") {
   scrollUp();
 }
 
